@@ -1,0 +1,67 @@
+Certainly! Here's a step-by-step guide on how to do C programming on Linux:
+
+1. Install a C Compiler (GCC):
+Most Linux distributions come with the GNU Compiler Collection (GCC) pre-installed. However, if it's not installed, you can use your package manager to install it. For example, on Ubuntu or Debian-based systems, you can use:
+
+bash
+Copy code
+sudo apt update
+sudo apt install build-essential
+This installs essential development tools, including GCC.
+
+2. Choose a Text Editor or IDE:
+Using a Text Editor:
+You can use a text editor of your choice for writing C code. Common editors include Vim, Emacs, and Nano.
+
+To create a new C file using Nano:
+
+bash
+Copy code
+nano your_program.c
+Write your C code in the editor.
+
+Save the file (Ctrl + O in Nano, followed by Enter) and exit (Ctrl + X in Nano).
+
+Using an IDE:
+If you prefer an Integrated Development Environment (IDE), consider using Code::Blocks, CLion, or Eclipse. Install the IDE using your package manager or by following the instructions on their respective websites.
+
+3. Write Your C Code:
+Open your C file in the chosen text editor or IDE and write your C code. For example:
+
+c
+Copy code
+#include <stdio.h>
+
+int main() {
+    printf("Hello, Linux C Programming!\n");
+    return 0;
+}
+4. Save and Compile:
+Using a Text Editor:
+If you used a text editor, save the file and then compile it using GCC:
+
+bash
+Copy code
+gcc your_program.c -o your_program
+This will create an executable file named your_program. You can then run it using ./your_program.
+
+Using an IDE:
+If you're using an IDE, follow the IDE-specific instructions to build and run your program.
+
+5. Run Your Program:
+If you used a text editor and GCC, run your program:
+
+bash
+Copy code
+./your_program
+You should see the output: Hello, Linux C Programming!
+
+6. Debugging (Optional):
+If you encounter issues or want to debug your program, you can use GDB (GNU Debugger). Install it using your package manager and run your program with:
+
+bash
+Copy code
+gdb ./your_program
+Follow GDB commands for debugging.
+
+That's it! You've successfully written and run a C program on Linux. Feel free to explore more advanced topics, libraries, and tools as you continue your C programing
