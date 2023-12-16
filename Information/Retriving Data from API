@@ -1,0 +1,82 @@
+wania@wania-VirtualBox:~$ sudo apt-get update
+[sudo] password for wania: 
+Hit:1 http://pk.archive.ubuntu.com/ubuntu jammy InRelease                   
+Get:2 http://pk.archive.ubuntu.com/ubuntu jammy-updates InRelease [119 kB]   
+Get:3 http://pk.archive.ubuntu.com/ubuntu jammy-backports InRelease [109 kB] 
+Get:4 http://pk.archive.ubuntu.com/ubuntu jammy-updates/main i386 Packages [547 kB]
+Get:5 http://pk.archive.ubuntu.com/ubuntu jammy-updates/main amd64 Packages [1,263 kB]
+Get:6 http://security.ubuntu.com/ubuntu jammy-security InRelease [110 kB]
+Get:7 http://pk.archive.ubuntu.com/ubuntu jammy-updates/main Translation-en [260 kB]
+Get:8 http://pk.archive.ubuntu.com/ubuntu jammy-updates/restricted amd64 Packages [1,250 kB]
+Get:9 http://pk.archive.ubuntu.com/ubuntu jammy-updates/restricted Translation-en [203 kB]
+Get:10 http://pk.archive.ubuntu.com/ubuntu jammy-updates/universe amd64 Packages [1,019 kB]
+Get:11 http://pk.archive.ubuntu.com/ubuntu jammy-updates/universe i386 Packages [676 kB]
+Get:12 http://pk.archive.ubuntu.com/ubuntu jammy-updates/universe Translation-en [226 kB]
+Get:13 http://pk.archive.ubuntu.com/ubuntu jammy-backports/main amd64 Packages [41.7 kB]
+Get:14 http://pk.archive.ubuntu.com/ubuntu jammy-backports/main i386 Packages [33.9 kB]
+Get:15 http://pk.archive.ubuntu.com/ubuntu jammy-backports/universe i386 Packages [13.4 kB]
+Get:16 http://security.ubuntu.com/ubuntu jammy-security/main i386 Packages [383 kB]
+Get:17 http://pk.archive.ubuntu.com/ubuntu jammy-backports/universe amd64 Packages [24.3 kB]
+Get:18 http://security.ubuntu.com/ubuntu jammy-security/main amd64 Packages [1,051 kB]
+Get:19 http://security.ubuntu.com/ubuntu jammy-security/main Translation-en [200 kB]
+Get:20 http://security.ubuntu.com/ubuntu jammy-security/restricted amd64 Packages [1,226 kB]
+Get:21 http://security.ubuntu.com/ubuntu jammy-security/restricted Translation-en [200 kB]
+Get:22 http://security.ubuntu.com/ubuntu jammy-security/universe amd64 Packages [823 kB]
+Get:23 http://security.ubuntu.com/ubuntu jammy-security/universe i386 Packages [580 kB]
+Get:24 http://security.ubuntu.com/ubuntu jammy-security/universe Translation-en [156 kB]
+Fetched 10.5 MB in 28s (380 kB/s)                                              
+Reading package lists... Done
+wania@wania-VirtualBox:~$ sudo apt-get install ;ibcurl4-openssl-dev
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+0 upgraded, 0 newly installed, 0 to remove and 190 not upgraded.
+ibcurl4-openssl-dev: command not found
+wania@wania-VirtualBox:~$ sudo apt-get install libcurl4-openssl-dev
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  libcurl4
+Suggested packages:
+  libcurl4-doc libidn11-dev libkrb5-dev libldap2-dev librtmp-dev libssh2-1-dev
+  libssl-dev pkg-config zlib1g-dev
+The following NEW packages will be installed:
+  libcurl4-openssl-dev
+The following packages will be upgraded:
+  libcurl4
+1 upgraded, 1 newly installed, 0 to remove and 189 not upgraded.
+Need to get 675 kB of archives.
+After this operation, 1,697 kB of additional disk space will be used.
+Do you want to continue? [Y/n] y
+Get:1 http://pk.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libcurl4 amd64 7.81.0-1ubuntu1.15 [289 kB]
+Get:2 http://pk.archive.ubuntu.com/ubuntu jammy-updates/main amd64 libcurl4-openssl-dev amd64 7.81.0-1ubuntu1.15 [386 kB]
+Fetched 675 kB in 9s (77.2 kB/s)              
+(Reading database ... 167613 files and directories currently installed.)
+Preparing to unpack .../libcurl4_7.81.0-1ubuntu1.15_amd64.deb ...
+Unpacking libcurl4:amd64 (7.81.0-1ubuntu1.15) over (7.81.0-1ubuntu1.13) ...
+Selecting previously unselected package libcurl4-openssl-dev:amd64.
+Preparing to unpack .../libcurl4-openssl-dev_7.81.0-1ubuntu1.15_amd64.deb ...
+Unpacking libcurl4-openssl-dev:amd64 (7.81.0-1ubuntu1.15) ...
+Setting up libcurl4:amd64 (7.81.0-1ubuntu1.15) ...
+Setting up libcurl4-openssl-dev:amd64 (7.81.0-1ubuntu1.15) ...
+Processing triggers for man-db (2.10.2-1) ...
+Processing triggers for libc-bin (2.35-0ubuntu3.1) ...
+wania@wania-VirtualBox:~$ touch cep
+wania@wania-VirtualBox:~$ touch.c
+touch.c: command not found
+wania@wania-VirtualBox:~$ touch cep.c
+wania@wania-VirtualBox:~$ gcc --version
+gcc (Ubuntu 11.4.0-1ubuntu1~22.04) 11.4.0
+Copyright (C) 2021 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+wania@wania-VirtualBox:~$ touch cep.c
+wania@wania-VirtualBox:~$ cd Desktop
+wania@wania-VirtualBox:~/Desktop$ touch cep.c
+wania@wania-VirtualBox:~/Desktop$ gcc -o cep cep.c -lcurl
+wania@wania-VirtualBox:~/Desktop$ ./cep
+{"coord":{"lon":67.0011,"lat":24.8607},"weather":[{"id":721,"main":"Haze","description":"haze","icon":"50n"}],"base":"stations","main":{"temp":292.22,"feels_like":291.54,"temp_min":292.22,"temp_max":292.22,"pressure":1018,"humidity":52},"visibility":3000,"wind":{"speed":0,"deg":0},"clouds":{"all":0},"dt":1702669551,"sys":{"type":1,"id":7576,"country":"PK","sunrise":1702692561,"sunset":1702730725},"timezone":18000,"id":1174872,"name":"Karachi","cod":200}
+wania@wania-VirtualBox:~/Desktop$ ^C
+wania@wania-VirtualBox:~/Desktop$
