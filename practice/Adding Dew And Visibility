@@ -1,0 +1,258 @@
+#include <stdio.h>
+
+#include <stdlib.h>
+
+#include <curl/curl.h>
+
+#include <jansson.h>
+
+
+
+// Callback function to write data to a file
+
+size_t write_callback(void *contents, size_t size, size_t nmemb, FILE *file) {
+
+    return fwrite(contents, size, nmemb, file);
+
+}
+
+
+
+// Function to extract and write weather data to a file
+
+void extract_and_write_weather_data(const char *json_data) {
+
+    json_t *root;
+
+    json_error_t error;
+
+    root = json_loads(json_data, 0, &error);
+
+
+
+    if (!root) {
+
+        fprintf(stderr, "JSON parsing error: %s\n", error.text);
+
+        return;
+
+    }
+
+
+
+    FILE *processedFile = fopen("Processed_Data", "w");
+
+    if (!processedFile) {
+
+        fprintf(stderr, "Error opening Processed Data file for writing.\n");
+
+        json_decref(root);
+
+        return;
+
+    }
+
+
+
+    json_t *days = json_object_get(root, "days");
+
+    if (json_is_array(days)) {
+
+        for (size_t i = 0; i < json_array_size(days); i++) {
+
+            json_t *day = json_array_get(days, i);
+
+            json_t *datetime = json_object_get(day, "datetime");
+
+            fprintf(processedFile, "Day %zu - %s\n", i + 1, json_string_value(datetime));
+
+
+
+            json_t *hours = json_object_get(day, "hours");
+
+            if (json_is_array(hours)) {
+
+                for (size_t j = 0; j < json_array_size(hours); j++) {
+
+                    json_t *hour = json_array_get(hours, j);
+
+                    json_t *hourDatetime = json_object_get(hour, "datetime");
+
+                    json_t *temp = json_object_get(hour, "temp");
+
+                    json_t *humidity = json_object_get(hour, "humidity");
+
+                    json_t *windspeed = json_object_get(hour, "windspeed");
+
+                    json_t *dew = json_object_get(hour, "dew");
+
+                    json_t *visibility = json_object_get(hour, "visibility");
+
+
+
+                    if (json_is_real(temp) && json_is_real(humidity) && json_is_real(windspeed) &&
+
+                        json_is_real(dew) && json_is_real(visibility)) {
+
+                        fprintf(processedFile, "  Hour %zu - \n", j + 1);
+
+                        fprintf(processedFile, "    Temperature: %.2f,\n", json_real_value(temp));
+
+                        fprintf(processedFile, "    Humidity: %.2f,\n", json_real_value(humidity));
+
+                        fprintf(processedFile, "    Wind Speed: %.2f,\n", json_real_value(windspeed));
+
+                        fprintf(processedFile, "    Dew: %.2f,\n", json_real_value(dew));
+
+                        fprintf(processedFile, "    Visibility: %.2f\n", json_real_value(visibility));
+
+                    }
+
+                }
+
+            }
+
+        }
+
+    }
+
+
+
+    fclose(processedFile);
+
+    json_decref(root);
+
+}
+
+
+
+int main() {
+
+    const char *url = "https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/24.8607,67.0011/next14days?unitGroup=metric&key=ZW9AR97RBK5CAKJJ8RDE9DR4P";
+
+
+
+    FILE *file = fopen("raw_data", "wb");
+
+    if (!file) {
+
+        fprintf(stderr, "Error opening file for writing.\n");
+
+        return 1;
+
+    }
+
+
+
+    CURL *curl = curl_easy_init();
+
+    if (!curl) {
+
+        fprintf(stderr, "Error initializing cURL.\n");
+
+        fclose(file);
+
+        return 1;
+
+    }
+
+
+
+    curl_easy_setopt(curl, CURLOPT_URL, url);
+
+    curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, write_callback);
+
+    curl_easy_setopt(curl, CURLOPT_WRITEDATA, file);
+
+
+
+    CURLcode res = curl_easy_perform(curl);
+
+    if (res != CURLE_OK) {
+
+        fprintf(stderr, "cURL failed: %s\n", curl_easy_strerror(res));
+
+    } else {
+
+        fclose(file);
+
+
+
+        file = fopen("raw_data", "rb");
+
+        if (!file) {
+
+            fprintf(stderr, "Error opening file for reading.\n");
+
+            curl_easy_cleanup(curl);
+
+            return 1;
+
+        }
+
+
+
+        fseek(file, 0, SEEK_END);
+
+        long fileSize = ftell(file);
+
+        rewind(file);
+
+
+
+        char *buffer = malloc(fileSize + 1);
+
+        if (!buffer) {
+
+            fprintf(stderr, "Error allocating memory.\n");
+
+            fclose(file);
+
+            curl_easy_cleanup(curl);
+
+            return 1;
+
+        }
+
+
+
+        size_t bytesRead = fread(buffer, 1, fileSize, file);
+
+        fclose(file);
+
+
+
+        if (bytesRead != fileSize) {
+
+            fprintf(stderr, "Error reading file content.\n");
+
+            free(buffer);
+
+            curl_easy_cleanup(curl);
+
+            return 1;
+
+        }
+
+
+
+        buffer[bytesRead] = '\0';
+
+
+
+        extract_and_write_weather_data(buffer);
+
+
+
+        free(buffer);
+
+    }
+
+
+
+    curl_easy_cleanup(curl);
+
+    return 0;
+
+}
+
