@@ -26,6 +26,7 @@ The Environmental Monitoring System is a comprehensive C-based project designed 
 	Prerequisites:
 
 Before installing and running the system, ensure that you have the following prerequisites installed on your system:
+
      libcurl: A library for making HTTP requests.
      cJSON: A lightweight JSON parsing library in C.
 
