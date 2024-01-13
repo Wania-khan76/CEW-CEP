@@ -84,16 +84,16 @@ void retrieveAndWriteData() {
                 cJSON *dew = cJSON_GetObjectItemCaseSensitive(day_item, "dew");
                 cJSON *description = cJSON_GetObjectItemCaseSensitive(day_item, "description");
 
-                // Create a new dictionary for each day
+                // Creating a new dictionary for each day which will help in the report later on
                 cJSON *dayDict = cJSON_CreateObject();
                 cJSON_AddItemToObject(dayDict, "datetime", cJSON_Duplicate(datetime, 1));
                 cJSON_AddItemToObject(dayDict, "temp", cJSON_Duplicate(temp, 1));
                 cJSON_AddItemToObject(dayDict, "windspeed", cJSON_Duplicate(windspeed, 1));
                 cJSON_AddItemToObject(dayDict, "humidity", cJSON_Duplicate(humidity, 1));
-                cJSON_AddItemToObject(dayDict, "dew", cJSON_Duplicate(dew, 1));
-                cJSON_AddItemToObject(dayDict, "description", cJSON_Duplicate(description, 1));
+                cJSON_AddItemToObject(dayDict, "dew", cJSON_Duplicate(dew, 1)); 
+                cJSON_AddItemToObject(dayDict, "description", cJSON_Duplicate(description, 1)); 
 
-                // Add the dictionary to the resultArray
+                // Adding the dictionaries to the Result Array 
                 cJSON_AddItemToArray(resultArray, dayDict);
             } else {
                 printf("ERROR: Element at index %d is not an object.\n", i);
@@ -170,4 +170,25 @@ void retrieveAndWriteData() {
                 }
 
                 // Close the processed_data.json file
-               
+                fclose(processed_file);
+            } else {
+                printf("ERROR: Memory allocation failed.\n");
+            }
+        } else {
+            printf("ERROR: Unable to open processed_output.json for reading.\n");
+        }
+    } else {
+        printf("ERROR: 'days' is not an array in the JSON.\n");
+    }
+
+    // Cleanup: Free memory and close files
+    cJSON_Delete(json);
+    fclose(raw_file);
+}
+
+// Main function
+int main() {
+    // Call the retrieveAndWriteData function
+    retrieveAndWriteData();
+    return 0;
+}
