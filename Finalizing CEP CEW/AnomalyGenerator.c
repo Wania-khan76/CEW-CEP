@@ -21,7 +21,7 @@ void checkAndLogAnomalies(WeatherData *data, int numDays) {
             fprintf(logFile, "Date: %s\n", data[i].datetime);
 
             // Check and log humidity anomalies
-            if (data[i].humidity >= 70) {
+            if (data[i].humidity >= 65) {
                 fprintf(logFile, "   Humidity: %.2f - Very humid, lots of moisture in the air\n", data[i].humidity);
             } else if (data[i].humidity <= 30) {
                 fprintf(logFile, "   Humidity: %.2f - Very dry weather\n", data[i].humidity);
