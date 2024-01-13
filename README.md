@@ -31,22 +31,30 @@ Before installing and running the system, ensure that you have the following pre
      libcurl: A library for making HTTP requests.
      cJSON: A lightweight JSON parsing library in C.
 
+     
+ If you don't have libcurl or cJSON you can use the script file which is essentils.sh which will download libcurl and cJASON.
 
 
 	Installation
 1.	Clone the repository:
                  git clone https://github.com/Wania-khan76/CEW-CEP/tree/main/Finalizing%20CEP%20CEW
 
-2.	Compile the code using your preferred C compiler.
-3.	For example:
+2.	open the terminal where your code is 
+	then write:
+
+  	    chmod +x CEWWeatherAPI.sh./CEWWeatherAPI.sh
+
+
+3. Run the script file using
+
+                  ./CEWWeatherAPI.sh
 
    
-		  gcc main.c -lcurl -lcjson -o monitor
+		 
   	
  Usage
 
-    Run the compiled executable:
-               ./monitor
+   
 Follow the on-screen instructions to retrieve, process, and analyze weather data.
 
 
