@@ -1,7 +1,15 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <cjson/cJSON.h>
+#include "ProcessData.h"
+
+void createInitialFile() {
+    FILE *initialFile = fopen("processed_data.json", "w");
+
+    if (initialFile == NULL) {
+        perror("Error opening processed_data.json");
+        return;
+    }
+    fprintf(initialFile, "{ \"result\" : [] }");
+    fclose(initialFile);
+}
 
 // Function to retrieve data from raw_data.json, process it, and write to processed_data.json
 void retrieveAndWriteData() {
@@ -102,6 +110,12 @@ void retrieveAndWriteData() {
 
         // Open the existing processed_data.json file for reading
         FILE *processed_file = fopen("processed_data.json", "r");
+        if (processed_file == NULL) {
+        // If the file doesn't exist, create it and write the initial format
+        createInitialFile();
+        processed_file = fopen("processed_data.json", "r");
+        }
+        
         if (processed_file != NULL) {
             // Determine the size of the existing processed_data.json file
             fseek(processed_file, 0, SEEK_END);
