@@ -52,7 +52,9 @@ Follow the on-screen instructions to retrieve, process, and analyze weather data
 
 	Code Structure:
 
+
 The project is organized into several header files, each responsible for a specific functionality.
+
 
 Weather API Module libcurl
 
@@ -71,19 +73,25 @@ Anomaly Checker Module
 
 •	anomaly_checker.h: The anomaly checker module identifies and logs anomalies in humidity and windspeed. It defines a structure (WeatherData) to represent weather parameters for anomaly checking.
 
-Email Sender Module
+Email Sender Module:
 
-•	email_sender.h: The email sender module provides functionality to read file content and send an email with a report and anomaly file attachment.	
+•	email_sender.h: The email sender module provides functionality to read file content and send an email with a report and anomaly file attachment.
+
+
 Technologies Used:
 
 The Environmental Monitoring System utilizes the following key technologies:
 
+
 •	libcurl: A versatile and easy-to-use library for making HTTP requests.
+
 •	cJSON: A lightweight JSON parsing library in C.
 
-Contributing
+Contributing:
+
 Contributions to the project are welcome! Please follow the Contribution Guidelines for details on how to contribute.
 
-License
+License:
+
 This project is licensed under the MIT License - see the LICENSE file for details.
 
