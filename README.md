@@ -32,7 +32,7 @@ Before installing and running the system, ensure that you have the following pre
      cJSON: A lightweight JSON parsing library in C.
 
      
- If you don't have libcurl or cJSON you can use the script file which is essentils.sh which will download libcurl and cJASON.
+ If you don't have libcurl or cJSON you can use the script file which is essentials.sh which will download libcurl and cJASON.
 
 
 	Installation
