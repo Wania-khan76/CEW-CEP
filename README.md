@@ -43,20 +43,17 @@ Before installing and running the system, ensure that you have the following pre
 2.	open the terminal where your code is 
 	then write:
 
-  	    chmod +x CEWWeatherAPI.sh./CEWWeatherAPI.sh
-
+  	    chmod +x CEWWeatherAPI.sh
 
 3. Run the script file using
 
                   ./CEWWeatherAPI.sh
 
-   
-		 
+   	 
   	
  Usage
 
-   
-Follow the on-screen instructions to retrieve, process, and analyze weather data.
+We only need to run the CEWWeatherAPI.sh script which will automatically run all the files and send an email of the report and anomaly log to the user.
 
 
 	Code Structure:
