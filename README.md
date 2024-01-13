@@ -21,6 +21,7 @@ The Environmental Monitoring System is a comprehensive C-based project designed 
 
 
 	Getting Started:
+
         To quickly get started with the Environmental Monitoring System, follow the steps outlined                below.
 
 	Prerequisites:
