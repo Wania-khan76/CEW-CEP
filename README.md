@@ -97,7 +97,4 @@ Contributing:
 
 Contributions to the project are welcome! Please follow the Contribution Guidelines for details on how to contribute.
 
-License:
-
-This project is licensed under the MIT License - see the LICENSE file for details.
 
