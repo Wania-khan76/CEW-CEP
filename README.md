@@ -34,11 +34,12 @@ Before installing and running the system, ensure that you have the following pre
 	Installation
 1.	Clone the repository:
                  git clone https://github.com/Wania-khan76/CEW-CEP/tree/main/Finalizing%20CEP%20CEW
-2.	Navigate to the project directory:
-                      cd environmental-monitoring-system
-3.	Compile the code using your preferred C compiler.
-4.	For example:
-               gcc main.c -lcurl -lcjson -o monitor
+
+2.	Compile the code using your preferred C compiler.
+3.	For example:
+
+   
+		  gcc main.c -lcurl -lcjson -o monitor
   	
  Usage
 
