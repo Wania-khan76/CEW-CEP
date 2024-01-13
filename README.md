@@ -5,6 +5,7 @@ Environmental Monitoring System in C:
 The Environmental Monitoring System is a comprehensive C-based project designed to collect, process, analyze, and report real-time weather data. The system is modular, featuring distinct components that address specific aspects of environmental monitoring. It encompasses weather data retrieval from an external API, data processing and analysis, anomaly detection, report generation, and email alerts.
 
 	Table of Contents:
+
 1.	Getting Started
 2.	Prerequisites
 3.	Installation
